@@ -23,7 +23,7 @@ public class flinkDemoVerify {
 
     public static void main(String[] args) {
         try {
-            LOG.info("start application flinkCDC");
+            LOG.info("start application flinkDemoVerify");
             //1.流处理执行环境
 
             ParameterTool tool = ExecutionEnvBuilder.createParameterTool(args);
@@ -58,7 +58,7 @@ public class flinkDemoVerify {
 
 
             //执行
-            env.execute("flinkDemo");
+            env.execute("flinkDemoVerify");
 
         } catch (Exception e) {
             LOG.error("job failed.", e);

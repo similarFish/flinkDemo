@@ -24,7 +24,7 @@ public class flinkDemo {
 
     public static void main(String[] args) {
         try {
-            LOG.info("start application flinkCDC");
+            LOG.info("start application flinkDemo");
             //1.流处理执行环境
 
             ParameterTool tool = ExecutionEnvBuilder.createParameterTool(args);
