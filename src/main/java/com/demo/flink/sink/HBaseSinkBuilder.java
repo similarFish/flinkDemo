@@ -1,13 +1,9 @@
 package com.demo.flink.sink;
 
 import com.alibaba.fastjson2.JSONObject;
-import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.configuration.Configuration;
-import org.apache.flink.connector.hbase.options.HBaseWriteOptions;
-import org.apache.flink.connector.hbase.sink.HBaseSinkFunction;
-import org.apache.flink.connector.hbase.util.HBaseTableSchema;
 import org.apache.flink.streaming.api.functions.sink.RichSinkFunction;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.HConstants;
@@ -18,7 +14,6 @@ import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.util.Bytes;
 
-import java.util.Properties;
 import java.util.UUID;
 
 public class HBaseSinkBuilder extends RichSinkFunction<Tuple2<String, String>> {
