@@ -20,6 +20,8 @@
         <kafka.version>2.4.1</kafka.version>
         <slf4j.version>1.7.32</slf4j.version>
         <log4j.version>2.11.1</log4j.version>
+        <hbase.version>2.2.3</hbase.version>
+        <hadoop.version>3.1.3</hadoop.version>
     </properties>
 
     <dependencies>
@@ -104,6 +106,11 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-clients_${scala.binary.version}</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
         <!-- flink extension end -->
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
@@ -160,5 +167,41 @@
             <version>1.15.3</version>
         </dependency>
         <!-- log end -->
+
+        <!-- Flink HBase 连接器依赖 -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-hbase-2.2_${scala.binary.version}</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+
+        <!-- HBase 依赖 -->
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-client</artifactId>
+            <version>${hbase.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-common</artifactId>
+            <version>${hbase.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-server</artifactId>
+            <version>${hbase.version}</version>
+        </dependency>
+
+        <!-- Hadoop 依赖 -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-hdfs</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
     </dependencies>
 </project>

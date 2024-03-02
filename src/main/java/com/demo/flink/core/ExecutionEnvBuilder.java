@@ -18,28 +18,14 @@ public class ExecutionEnvBuilder {
 
     private static final Logger LOG = LoggerUtil.getLogger();
 
-    public static String getExecuteEnvConf(ParameterTool parameterTool) {
-        String confName = parameterTool.get(EXECUTE_ENV_KEY);
-        //String confName = "application-" + env + ".properties";
-        if (StringUtils.isEmpty(confName)) {
-            throw new RuntimeException("Unsupported empty " + EXECUTE_ENV_KEY + " parameter");
-        }
-        return confName;
-    }
-
-
     // create parameter tool
     public static ParameterTool createParameterTool(final String[] args) throws IOException {
         LOG.info("======= start build ParameterTool =======");
         final ParameterTool argsParameter = ParameterTool.fromArgs(args);
-        final String executeEnvConf = getExecuteEnvConf(argsParameter);
-        LOG.info("======= execute env conf {} =======", executeEnvConf);
-        ParameterTool tool = ParameterTool.fromPropertiesFile(
-                ExecutionEnvBuilder.class.getClassLoader().getResourceAsStream(executeEnvConf))
+        return ParameterTool.fromPropertiesFile(
+                ExecutionEnvBuilder.class.getClassLoader().getResourceAsStream("application.properties"))
                 .mergeWith(argsParameter)
                 .mergeWith(ParameterTool.fromSystemProperties());
-        LOG.info("======= read flink program parameter file success. cfg = {} =======", executeEnvConf);
-        return tool;
     }
 
     public static StreamExecutionEnvironment buildEnvironment(ParameterTool tool) {
